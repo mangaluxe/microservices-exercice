@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Microservices avec API REST avec Spring Boot</title>
+    <style>
+        body {
+            font: 1em Verdana, sans-serif;
+            background-color: #c5daf5;
+            margin: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<main>
+
+    <h1>Microservices avec API REST avec Spring Boot</h1>
+
+    <p><a th:href="@{/api/utilisateur}">Tous les utilisateurs</a></p>
+    <p><a th:href="@{/api/utilisateur/1}">Utilisateur 1</a></p>
+
+    <p><a th:href="@{/api/commande}">Toutes les commandes</a></p>
+    <p><a th:href="@{/api/commande/1}">Commande 1</a></p>
+
+
+    <h2>Exercice</h2>
+
+    <pre>- Service Utilisateur
+
+        1. Définissez une entité User avec les champs suivants : id, name, et email.
+        2. Créez un service et un contrôleur pour l'entité User contenant les methodes d'un CRUD.
+        3. Le service doit avoir une endpoint pour récupérer un utilisateur par son id.
+
+        - Service Commande
+
+        1. Définissez une entité Order avec les champs : orderId, userId et product.
+        2. Créez un service et un contrôleur pour l'entité Order contenant les methodes d'un CRUD.
+        3. Le service doit avoir une endpoint pour récupérer toutes les commandes passées par un userId spécifique.
+
+
+        - Quand le OrderService reçoit une requête pour récupérer les commandes d'un utilisateur, il devrait également communiquer avec le UserService pour récupérer les informations détaillées de cet utilisateur
+    </pre>
+
+</main>
+
+</body>
+</html>
