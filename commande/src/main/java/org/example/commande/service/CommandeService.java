@@ -4,7 +4,7 @@ import org.example.commande.dto.CommandeDtoReceive;
 import org.example.commande.dto.CommandeDtoSend;
 import org.example.commande.dto.UtilisateurDto;
 import org.example.commande.repository.CommandeRepository;
-import org.example.commande.util.RestClient;
+// import org.example.commande.util.RestClient;
 import org.example.commande.entity.Commande;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
