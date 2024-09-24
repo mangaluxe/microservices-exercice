@@ -6,8 +6,8 @@ import lombok.Data;
 @Data
 public class CommandeDtoReceive {
 
-    private String product;
+    private String produit;
 
-    private int userId;
+    private int utilisateurId; // Lien vers l'utilisateur
 
 }

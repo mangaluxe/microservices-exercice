@@ -8,10 +8,10 @@ import lombok.Data;
 @Builder
 public class CommandeDtoSend {
 
-    private int orderId;
+    private int id;
 
-    private String product;
+    private String produit;
 
-    private UtilisateurDto utilisateur;
+    private int utilisateurId; // Lien vers l'utilisateur
 
 }

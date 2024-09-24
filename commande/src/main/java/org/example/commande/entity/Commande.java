@@ -1,6 +1,5 @@
 package org.example.commande.entity;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.example.commande.dto.UtilisateurDto;
+
 
 @Data
 @NoArgsConstructor
@@ -19,10 +20,10 @@ public class Commande {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int orderId;
+    private int id;
 
-    private String product;
+    private String produit;
 
-    private int userId;
+    private int utilisateurId; // Lien vers l'utilisateur
 
 }

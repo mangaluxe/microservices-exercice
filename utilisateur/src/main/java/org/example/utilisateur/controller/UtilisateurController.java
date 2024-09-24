@@ -32,7 +32,7 @@ public class UtilisateurController {
         return ResponseEntity.ok(utilisateurService.getAllUtilisateurs());
     }
 
-    @GetMapping("{id}") // URL : http://localhost:8081/api/utilisateur/1
+    @GetMapping("/{id}") // URL : http://localhost:8081/api/utilisateur/1
     public ResponseEntity<Utilisateur> getById(@PathVariable("id") int id) {
         return ResponseEntity.ok(utilisateurService.getById(id));
     }
@@ -44,10 +44,19 @@ public class UtilisateurController {
         return ResponseEntity.status(HttpStatus.CREATED).body(utilisateurService.create(utilisateurDtoReceive));
     }
 
-
     // ----- Update -----
 
+    @PutMapping("/{id}/update")
+    public ResponseEntity<Utilisateur> update(@PathVariable int id, @RequestBody UtilisateurDtoReceive utilisateur) {
+        return ResponseEntity.ok(utilisateurService.update(utilisateur, id));
+    }
 
     // ----- Delete -----
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> delete(@PathVariable int id) {
+        utilisateurService.delete(id);
+        return ResponseEntity.ok("Utilisateur supprimé");
+    }
 
 }

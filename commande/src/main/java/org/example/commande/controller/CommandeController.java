@@ -30,44 +30,43 @@ public class CommandeController {
     // ----- Read -----
 
     @GetMapping
-    public ResponseEntity<List<CommandeDtoSend>> getAll() {
-        return ResponseEntity.ok(commandeService.findAll());
-
-//        List<Commande> commandes = commandeService.findAll(); // Récupération de la liste des livres via le service
-//        List<CommandeDtoSend> commandeDtoSends = new ArrayList<>(); // Transformation des entités Book en DTO BookDtoSend
-//
-//        for (Commande commande : commandes) {
-//            commandeDtoSends.add(new CommandeDtoSend(commande.getOrderId(), commande.getProduct(), commande.getUserId()));
-//        }
-//
-//        return ResponseEntity.ok(commandeDtoSends);
+    public ResponseEntity<List<Commande>> getAllCommandes() {
+        return ResponseEntity.ok(commandeService.getAllCommandes());
     }
 
-    @GetMapping("/{id}") // URL : http://localhost:8081/api/commande/1
-    public ResponseEntity<CommandeDtoSend> getById(@PathVariable int id) {
+    @GetMapping("/{id}")
+    public ResponseEntity<Commande> getById(@PathVariable("id") int id) {
         return ResponseEntity.ok(commandeService.getById(id));
+    }
+
+    // --- ---
+
+    @GetMapping("/utilisateur/{utilisateurId}") // URL : http://localhost:8080/api/commande/utilisateur/1
+    public ResponseEntity<List<Commande>> getCommandesByUtilisateurId(@PathVariable int utilisateurId) {
+        List<Commande> commandes = commandeService.getCommandesByUtilisateurId(utilisateurId);
+        return ResponseEntity.ok(commandes);
     }
 
     // ----- Create -----
 
     @PostMapping
-    public ResponseEntity<CommandeDtoSend> create(@RequestBody CommandeDtoReceive commandeDtoReceive) {
+    public ResponseEntity<Commande> create(@RequestBody CommandeDtoReceive commandeDtoReceive) {
         return ResponseEntity.status(HttpStatus.CREATED).body(commandeService.create(commandeDtoReceive));
     }
 
     // ----- Update -----
 
-    @PutMapping("/{id}/delete")
-    public ResponseEntity<CommandeDtoSend> update(@PathVariable int id, @RequestBody CommandeDtoReceive commandeDtoReceive) {
-        return ResponseEntity.ok(commandeService.update(commandeDtoReceive, id));
+    @PutMapping("/{id}/update")
+    public ResponseEntity<Commande> update(@PathVariable int id, @RequestBody CommandeDtoReceive commandeDto) {
+        return ResponseEntity.ok(commandeService.update(commandeDto, id));
     }
 
     // ----- Delete -----
 
-    @DeleteMapping("/{id}/delete")
-    public ResponseEntity<String> delete(@PathVariable("id") int id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> delete(@PathVariable int id) {
         commandeService.delete(id);
-        return ResponseEntity.ok("Commande supprimé");
+        return ResponseEntity.ok("Commande supprimée");
     }
 
 }

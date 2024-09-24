@@ -45,10 +45,20 @@ public class UtilisateurService {
 
     // ----- Update -----
 
+    public Utilisateur update(UtilisateurDtoReceive u, int id) {
+        Utilisateur u1 = getById(id);
+        u1.setName(u.getName());
+        u1.setEmail(u.getEmail());
+
+        return utilisateurRepository.save(u1);
+    }
+
 
     // ----- Delete -----
 
-
+    public void delete(int id) {
+        utilisateurRepository.delete(getById(id));
+    }
 
 
 
